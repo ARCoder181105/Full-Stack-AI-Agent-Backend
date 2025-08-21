@@ -32,6 +32,12 @@ app.use('/api/inngest', serve({
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
+        if (process.env.RENDER_EXTERNAL_URL) {
+            const inngestURL = new URL("/api/inngest", process.env.RENDER_EXTERNAL_URL);
+            fetch(inngestURL.toString(), { method: "PUT" })
+                .then(() => console.log("Inngest registered ✅"))
+                .catch((err) => console.error("Inngest registration failed:", err));
+        }
         console.log("MongoDB connected ✅");
         app.listen(PORT, () => console.log(`Serever is running on port ${PORT}`))
     })
