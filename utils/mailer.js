@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export const sendMail = async ({ to, subject, text}) => {
+export const sendMail = async ({ to, subject, text, html }) => {
   try {
     // ✅ Validate recipient
     if (!to || typeof to !== 'string' || !to.trim()) {
@@ -21,6 +21,7 @@ export const sendMail = async ({ to, subject, text}) => {
       to: to.trim(),
       subject,
       text,
+      html, // ✅ now supported
     });
 
     console.log("✅ Mail sent:", info.messageId);

@@ -70,7 +70,7 @@ export const onTicketCreated = inngest.createFunction(
           await sendMail({
             to: moderator.email,
             subject: `New Ticket Assigned: "${ticket.title}"`,
-            text: `A new ticket has been assigned to you. Please check the ticket dashboard for details.`,
+            text: `A new ticket has been assigned to you.\n\nSummary: ${aiResponse.summary}\nPriority: ${aiResponse.priority}\n\nCheck the dashboard for details.`,
           });
         } else {
           console.warn("⚠️ Moderator email missing. Skipping email.");

@@ -20,9 +20,9 @@ export const onUserSignup = inngest.createFunction(
 
       await step.run("send-welcome-email", async () => {
         const subject = "Welcome to the App!";
-        const text = `Hi ${user.name || ""},\n\nThanks for signing up. We're glad to have you onboard!`;
+        const text = `Hi ${user.email},\n\nThanks for signing up. We're glad to have you onboard!`;
         const html = `
-          <h2>Hi ${user.name || "there"},</h2>
+          <h2>Hi ${user.email},</h2>
           <p>Thanks for signing up. We're excited to have you with us! 🎉</p>
           <p>— The Team</p>
         `;
